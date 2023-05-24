@@ -5,3 +5,8 @@
 .navbar-brand img{
   width: 100%;
 }
+.card-img{
+  background-color: #6c757d;
+  height: 250px;
+  object-fit: cover;
+}
