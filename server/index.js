@@ -42,6 +42,16 @@ app.post("/books", (req, res)=>{
         if(err) return res.json(err);
         return res.json("Book added successfully")
     })
+});
+
+
+app.delete("/book/:id", (req, res)=>{
+    const bookId = req.params.id;
+    const q = "DELETE from books WHERE id = ?";
+    db.query(q, [bookId], (err, data)=>{
+if (err)  return res.json(err);
+return res.json("Book Deleted Successfully")
+    })
 })
 
 app.listen(port, ()=>{
