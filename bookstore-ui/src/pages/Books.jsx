@@ -65,9 +65,9 @@ function Books() {
                     <div className="card-body">
                       <h5 className="card-title">Author: {book.description}</h5>
                       <p className="card-text">Price: {book.price}</p>
-                      <a href="#" className="btn btn-secondary" onClick={() => handleView(book.id)}>View</a>
-                      <a href="#" className="btn btn-success" onClick={() => handleUpdate(book.id)}>Update</a>
-                      <a href="#" className="btn btn-danger" onClick={() => handleDelete(book.id)}>Delete</a>
+                      <a href="#" className="text-primary mx-2" onClick={() => handleView(book.id)}><i class="fa-solid fa-eye"></i></a>
+                      <a href="#" className="text-success mx-2" onClick={() => handleUpdate(book.id)}><i class="fa-solid fa-pen-to-square"></i></a>
+                      <a href="#" className="text-danger mx-2" onClick={() => handleDelete(book.id)}><i class="fa-sharp fa-solid fa-trash"></i></a>
                     </div>
                   </div>
                 </div>
