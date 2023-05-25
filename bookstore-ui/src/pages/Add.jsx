@@ -52,7 +52,7 @@ function Add() {
 
                     </div>
                     <div className='d-flex justify-content-between'>
-                        <button className='btn btn-secondary float-right my-3' onClick={()=>navigate("/")}>Go Back</button>
+                        <button className='btn btn-secondary float-right my-3' onClick={() => navigate("/")}>Go Back</button>
                         <button className='btn btn-primary float-right my-3' onClick={handleClick}>Submit</button>
                     </div>
                 </form>

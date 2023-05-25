@@ -31,7 +31,6 @@ function Books() {
       await axios.delete("http://localhost:8000/book/" + id);
       console.log("Deete")
       fetchAllBooks()
-      // window.location.reload();
     } catch (error) {
       console.log(error)
     }
