@@ -14,7 +14,7 @@ function Navbar() {
           <div className="" id="">
             <ul className="navbar-nav ms-auto mr-5 mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/add">Add New</Link>
+                <Link className="btn btn-primary" aria-current="page" to="/add">Add New</Link>
               </li>
             </ul>
           </div>

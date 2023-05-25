@@ -6,10 +6,10 @@ function Books() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    
+
     fetchAllBooks()
   }, [])
-  
+
   const fetchAllBooks = async () => {
     try {
       const res = await axois.get("http://localhost:8000/books");
@@ -19,7 +19,7 @@ function Books() {
       console.log(error)
     }
   }
-  
+
   const handleDelete = async (id) => {
     try {
 
