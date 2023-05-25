@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import axois from "axios"
-import { Link } from 'react-router-dom';
+import axios from "axios"
 import Navbar from '../components/Navbar';
+import Modal from '../components/Modal';
+import UpdateModel from '../components/UpdateModel';
 function Books() {
   const [books, setBooks] = useState([]);
+  const [show, setShow] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
+  const [bookDetail, setBookDetail] = useState([]);
+  const [bookEdit, setBookEdit] = useState(null)
 
   useEffect(() => {
 
@@ -12,7 +17,7 @@ function Books() {
 
   const fetchAllBooks = async () => {
     try {
-      const res = await axois.get("http://localhost:8000/books");
+      const res = await axios.get("http://localhost:8000/books");
       console.log(res);
       setBooks(res.data)
     } catch (error) {
@@ -23,7 +28,7 @@ function Books() {
   const handleDelete = async (id) => {
     try {
 
-      await axois.delete("http://localhost:8000/book/" + id);
+      await axios.delete("http://localhost:8000/book/" + id);
       console.log("Deete")
       fetchAllBooks()
       // window.location.reload();
@@ -32,6 +37,19 @@ function Books() {
     }
   }
 
+  const handleView = (id) => {
+    axios.get("http://localhost:8000/book/" + id).then((response) => {
+      setBookDetail(response.data)
+
+      setShow(true);
+    }).catch((err) => console.log(err));
+
+  }
+  const handleUpdate = (id) => {
+    setBookEdit(id)
+    setShowUpdate(true)
+
+  }
   return (
     <>
       <Navbar />
@@ -47,7 +65,8 @@ function Books() {
                     <div className="card-body">
                       <h5 className="card-title">Author: {book.description}</h5>
                       <p className="card-text">Price: {book.price}</p>
-                      <a href="#" className="btn btn-success">Update</a>
+                      <a href="#" className="btn btn-secondary" onClick={() => handleView(book.id)}>View</a>
+                      <a href="#" className="btn btn-success" onClick={() => handleUpdate(book.id)}>Update</a>
                       <a href="#" className="btn btn-danger" onClick={() => handleDelete(book.id)}>Delete</a>
                     </div>
                   </div>
@@ -56,11 +75,9 @@ function Books() {
             }
           </div>
         </div>
-
-        <button>
-          <Link to="/add">Add new book</Link>
-        </button>
       </div>
+      {show && <Modal show={show} bookDetail={bookDetail} closeModal={() => setShow(false)} />}
+      {showUpdate && <UpdateModel fetchAllBooks={fetchAllBooks} show={showUpdate} bookEdit={bookEdit} closeModal={() => setShowUpdate(false)} />}
     </>
   )
 }
