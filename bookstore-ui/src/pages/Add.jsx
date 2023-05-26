@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import UploadFiles from '../components/UploadFiles';
 
 function Add() {
     const [book, setBook] = useState({
@@ -51,6 +52,7 @@ function Add() {
                         </div>
 
                     </div>
+                <UploadFiles/>
                     <div className='d-flex justify-content-between'>
                         <button className='btn btn-secondary float-right my-3' onClick={() => navigate("/")}>Go Back</button>
                         <button className='btn btn-primary float-right my-3' onClick={handleClick}>Submit</button>

@@ -53,3 +53,12 @@
 .content > button {
   margin: 12px;
 }
+
+.upload_input{
+  height: 80px;
+  background-color: #7b7b7b3d;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;justify-content: center;
+  align-items: center;
+}
