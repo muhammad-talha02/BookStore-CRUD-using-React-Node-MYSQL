@@ -3,6 +3,7 @@ import axios from "axios"
 import Navbar from '../components/Navbar';
 import Modal from '../components/Modal';
 import UpdateModel from '../components/UpdateModel';
+import { Link } from 'react-router-dom';
 function Books() {
   const [books, setBooks] = useState([]);
   const [show, setShow] = useState(false);
@@ -57,21 +58,28 @@ function Books() {
         <div className="container">
           <div className="row d-flex justify-content-center gy-3">
             {
-              books.map((book) => (
+            
+              books.length > 0 ? books.map((book) => (
                 <div key={book.id} className="col-6 col-lg-3 col-md-4 book">
                   <div className="card">
-                    <img src={book.cover} className="card-img" alt={book.title} />
+                    <img src={`http://localhost:8000/uploads/${book.file}`} className="card-img" alt={"book.title"} />
+                    {console.log(`http://localhost:8000/uploads/${book.file}`)}
                     <div className="card-body">
-                      <h5 className="card-title">Author: {book.description}</h5>
-                      <p className="card-text">Price: {book.price}</p>
-                      <a href="#" className="text-primary mx-2" onClick={() => handleView(book.id)}><i class="fa-solid fa-eye"></i></a>
-                      <a href="#" className="text-success mx-2" onClick={() => handleUpdate(book.id)}><i class="fa-solid fa-pen-to-square"></i></a>
-                      <a href="#" className="text-danger mx-2" onClick={() => handleDelete(book.id)}><i class="fa-sharp fa-solid fa-trash"></i></a>
+                      <h5 className="card-title text-center">{book.title}</h5>
+                      <h6 className="card-text">Author: {book.author}</h6>
+                      <p className="card-text">Price: {book.price} $</p>
+                      <a className="text-primary mx-2" onClick={() => handleView(book.id)}><i class="fa-solid fa-eye"></i></a>
+                      <a className="text-success mx-2" onClick={() => handleUpdate(book.id)}><i class="fa-solid fa-pen-to-square"></i></a>
+                      <a className="text-danger mx-2" onClick={() => handleDelete(book.id)}><i class="fa-sharp fa-solid fa-trash"></i></a>
                     </div>
                   </div>
                 </div>
-              ))
+              )) : <>
+              <h2 className='text-center'>Books Not Found:</h2>
+              <Link className='text-center' to="/add">Add New Book</Link>
+              </> 
             }
+
           </div>
         </div>
       </div>

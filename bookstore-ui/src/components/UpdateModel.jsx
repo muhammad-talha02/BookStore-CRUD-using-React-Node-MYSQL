@@ -7,7 +7,6 @@ function UpdateModel({ show, closeModal, bookEdit,fetchAllBooks }) {
     const [book, setBook] = useState({
         title: "",
         description: "",
-        cover: "",
         price: '',
         author: ''
     });
@@ -54,9 +53,6 @@ function UpdateModel({ show, closeModal, bookEdit,fetchAllBooks }) {
                         </div>
                         <div className="col-12 col-md-6 g-3">
                             <input type='number' className='form-control' value={book.price} name='price' onChange={handleChange} placeholder='Price' />
-                        </div>
-                        <div className="col-12 col-md-6 g-3">
-                            <input type='text' className='form-control' value={book.cover} name='cover' onChange={handleChange} placeholder='Cover' />
                         </div>
                         <div className="col-12 col-md-12 g-3">
                             <textarea type='text' className='form-control' value={book.description} name='description' onChange={handleChange} placeholder='Description' />
