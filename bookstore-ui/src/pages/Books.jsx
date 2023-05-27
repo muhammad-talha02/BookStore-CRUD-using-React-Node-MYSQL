@@ -3,6 +3,7 @@ import axios from "axios"
 import Navbar from '../components/Navbar';
 import Modal from '../components/Modal';
 import UpdateModel from '../components/UpdateModel';
+import { Link } from 'react-router-dom';
 function Books() {
   const [books, setBooks] = useState([]);
   const [show, setShow] = useState(false);
@@ -57,7 +58,8 @@ function Books() {
         <div className="container">
           <div className="row d-flex justify-content-center gy-3">
             {
-              books.map((book) => (
+            
+              books.length > 0 ? books.map((book) => (
                 <div key={book.id} className="col-6 col-lg-3 col-md-4 book">
                   <div className="card">
                     <img src={`http://localhost:8000/uploads/${book.file}`} className="card-img" alt={"book.title"} />
@@ -72,8 +74,12 @@ function Books() {
                     </div>
                   </div>
                 </div>
-              ))
+              )) : <>
+              <h2 className='text-center'>Books Not Found:</h2>
+              <Link className='text-center' to="/add">Add New Book</Link>
+              </> 
             }
+
           </div>
         </div>
       </div>
